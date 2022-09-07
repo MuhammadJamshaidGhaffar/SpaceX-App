@@ -1,0 +1,39 @@
+.launch_img {
+  height: 65vh;
+}
+
+.description {
+  display: grid;
+  grid-template-columns: auto auto;
+  width: 80vw;
+  margin: auto;
+  background-color: bisque;
+  margin-bottom: 3rem;
+  padding: 1rem;
+}
+.grid_item {
+  text-align: start;
+  margin-left: 1rem;
+  border-bottom: 0;
+}
+
+.mission_name {
+  font-size: 2rem;
+}
+.launch_site_name {
+  font-size: 1.5rem;
+}
+.rocket_name {
+  font-size: 1.5rem;
+}
+.details {
+  background-color: thistle;
+  padding: 2rem;
+  font-size: 1.4rem;
+  margin: 2rem;
+}
+
+.heading {
+  font-size: 2rem;
+  font-weight: 700;
+}

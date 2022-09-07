@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Launches_Query } from "../../generated/graphql";
 import { useLaunches_Query } from "../../generated/graphql";
+import styles from "./style.module.css";
 
 function Launches() {
   const { data, loading, error } = useLaunches_Query();
@@ -10,23 +12,46 @@ function Launches() {
         <p>{error.message}</p>
       </div>
     );
-  if (loading) return <h1>Loading...</h1>;
+  else if (loading) return <h1>Loading...</h1>;
+  else if (!data) return <div>Data is not loaded or feteched</div>;
 
+  let imgUrl;
   return (
     <div>
-      {" "}
-      {data?.launches
-        ? data.launches.map((elm, index) => (
-            <div key={index}>
-              <p>{elm?.mission_name}</p>
-              <p>{elm?.launch_year}</p>
-              <p>{elm?.links?.flickr_images}</p>
-              <p>{elm?.mission_id}</p>
-            </div>
-          ))
-        : undefined}
+      <div>
+        <img
+          src="https://logos-world.net/imageup/SpaceX/SpaceX-Logo-PNG2.png"
+          alt=""
+          className={`${styles.spacex_logo}`}
+        />
+      </div>
+      <div className={styles.launches_div}>
+        {data?.launches
+          ? data.launches.map((launch, index) => (
+              <div key={index} className={styles.launch_div}>
+                <img
+                  src={removeNull(launch?.links?.flickr_images)}
+                  onClick={() => {
+                    window.open(
+                      `http://localhost:3000/launch/${launch?.id}`,
+                      "_blank"
+                    );
+                  }}
+                  alt=""
+                />
+                <p>{launch?.mission_name}</p>
+                <p>{launch?.launch_year}</p>
+              </div>
+            ))
+          : undefined}
+      </div>
     </div>
   );
 }
 
 export default Launches;
+
+function removeNull(elm: any) {
+  if (elm == null || elm == undefined) return "";
+  else return elm;
+}
