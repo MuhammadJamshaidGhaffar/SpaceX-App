@@ -52,6 +52,6 @@ function Launch() {
 export default Launch;
 
 function removeNull(elm: any) {
-  if (elm == null || elm == undefined) return "";
+  if (elm === null || elm === undefined) return "";
   else return elm;
 }

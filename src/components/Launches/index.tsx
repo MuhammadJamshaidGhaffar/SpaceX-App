@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import { Launches_Query } from "../../generated/graphql";
+import React from "react";
 import { useLaunches_Query } from "../../generated/graphql";
 import styles from "./style.module.css";
 
@@ -15,7 +14,6 @@ function Launches() {
   else if (loading) return <h1>Loading...</h1>;
   else if (!data) return <div>Data is not loaded or feteched</div>;
 
-  let imgUrl;
   return (
     <div>
       <div>
@@ -32,10 +30,7 @@ function Launches() {
                 <img
                   src={removeNull(launch?.links?.flickr_images)}
                   onClick={() => {
-                    window.open(
-                      `http://localhost:3000/launch/${launch?.id}`,
-                      "_blank"
-                    );
+                    window.open(`launch/${launch?.id}`, "_blank");
                   }}
                   alt=""
                 />
@@ -52,6 +47,6 @@ function Launches() {
 export default Launches;
 
 function removeNull(elm: any) {
-  if (elm == null || elm == undefined) return "";
+  if (elm === null || elm === undefined) return "";
   else return elm;
 }
