@@ -31,3 +31,9 @@
   left: 50%;
   transform: translate(-50%);
 }
+
+@media screen and (max-width: 474px) {
+  .launches_div {
+    justify-content: center;
+  }
+}
