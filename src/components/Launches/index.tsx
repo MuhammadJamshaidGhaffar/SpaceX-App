@@ -6,12 +6,12 @@ function Launches() {
   const { data, loading, error } = useLaunches_Query();
   if (error)
     return (
-      <div>
+      <div className={styles.div}>
         <h1>Failed to load data from Server</h1>
-        <p>{error.message}</p>
+        <p className={styles.error_message}>{error.message}</p>
       </div>
     );
-  else if (loading) return <h1>Loading...</h1>;
+  else if (loading) return <h1 className={styles.div}>Loading...</h1>;
   else if (!data) return <div>Data is not loaded or feteched</div>;
 
   return (

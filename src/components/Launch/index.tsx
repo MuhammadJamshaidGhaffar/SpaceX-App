@@ -10,12 +10,12 @@ function Launch() {
   });
   if (error)
     return (
-      <div>
+      <div className={styles.div}>
         <h1>Something went Wrong</h1>
-        <p>{error.message}</p>
+        <p className={styles.error_message}>{error.message}</p>
       </div>
     );
-  if (loading) return <h1>Loading...</h1>;
+  if (loading) return <h1 className={styles.div}>Loading...</h1>;
   return (
     <div>
       <img
